@@ -7,14 +7,11 @@
 
 <script>
 import { ref, onMounted } from 'vue';
-import { useCreateIframeAndLoadViewer } from './Viewer';
-import { useOnMounted } from './test';
+import { useCreateIframeAndLoadViewer } from '@prodfox/vue-pdf-editor';
 
 export default {
   name: 'App',
   setup() {
-    useOnMounted();
-
     const containerRef = ref(null);
 
     const { download } = useCreateIframeAndLoadViewer({
@@ -44,6 +41,8 @@ export default {
         },
       ],
     });
+
+    console.log(download, 'download')
 
     return {
       containerRef,
