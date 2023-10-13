@@ -18,6 +18,18 @@ export const useCreateIframeAndLoadViewer = ({
   const iframeLoadedSuccessfully = ref(false);
   const pagesLoaded = ref(null);
 
+  const setInternalIsReady = (value: boolean) => {
+    internalIsReady.value = value;
+  };
+
+  const setPagesLoaded = (value: any) => {
+    pagesLoaded.value = value;
+  };
+
+  const setSelectedPages = (value: any) => {
+    selectedPages.value = value;
+  };
+
   const createIframe = () => {
     const iframe = document.createElement('iframe');
 
