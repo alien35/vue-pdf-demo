@@ -12,7 +12,6 @@ export const useCreateIframeAndLoadViewer = ({
   iframeSrc,
   onFileFailed
 }: any) => {
-  console.log("DOGGG")
   const internalIsReady = ref(false);
   const selectedPages = ref([]);
   const done = ref(false);
@@ -20,7 +19,6 @@ export const useCreateIframeAndLoadViewer = ({
   const pagesLoaded = ref(null);
 
   const createIframe = () => {
-    console.log("CREST")
     const iframe = document.createElement('iframe');
 
     iframe.src = iframeSrc || `/pdf-ui/index.html`;
@@ -81,7 +79,7 @@ export const useCreateIframeAndLoadViewer = ({
 
   const handleIframeLoaded = (event) => {
     if (event.data.type === 'iframe-loaded' && event.data.success) {
-      iframeLoadedSuccessfully.current = true;
+      iframeLoadedSuccessfully.value = true;
       setInternalIsReady(true);
     }
   };
@@ -96,7 +94,7 @@ export const useCreateIframeAndLoadViewer = ({
   });
 
   const handleVisibilityChange = () => {
-    if (!document.hidden && !iframeLoadedSuccessfully.current) {
+    if (!document.hidden && !iframeLoadedSuccessfully.value) {
       const iframe = document.getElementById('webviewer-1');
       if (iframe) {
         iframe.remove();
